@@ -1,22 +1,13 @@
-import {CkitProvider, predefined} from '@ckitjs/ckit'
 import {normalizers, Reader} from 'ckb-js-toolkit'
-import {Cell, Script} from '@ckb-lumos/base'
 import {SerializeWitnessArgs} from '@ckb-lumos/base/lib/core'
 import {SECP_SIGNATURE_PLACEHOLDER} from '@ckb-lumos/common-scripts/lib/helper'
-import {privateKeyToBlake160} from "@ckb-lumos/hd/lib/key"
 import {
-  generateSecp256k1Blake160Address,
   sealTransaction,
   TransactionSkeleton,
 } from "@ckb-lumos/helpers"
 import {predefined as lumosPrefined} from "@ckb-lumos/config-manager"
 import {config, hd, Indexer, RPC} from "@ckb-lumos/lumos"
 import {prepareSigningEntries} from "@ckb-lumos/common-scripts/lib/helper"
-import {
-  Amount,
-  AmountUnit,
-} from '@lay2/pw-core'
-import { secp256k1Blake160 } from '@ckb-lumos/common-scripts'
 
 async function main() {
     config.initializeConfig(config.predefined.AGGRON4);
@@ -50,17 +41,6 @@ async function main() {
         // https://pudge.explorer.nervos.org/transaction/0x4a17b2b340a2e65b73feb075e3d96ab979e6cfff1ba630006261d3370f74268d
         // 1000 tx fee
         return outputs.push(
-            // {
-            //     cell_output: {
-            //         capacity: '0x16b969d00',
-            //         lock: {
-            //             args: '0x730ebab86d20560e103535ebb789d8c3a7f7c337',
-            //             code_hash: '0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8',
-            //             hash_type: 'type',
-            //         },
-            //     },
-            //     data: '0x',
-            // },
             {
                 cell_output: {
                     // capacity: '0x19a27884c6',
